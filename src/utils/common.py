@@ -37,6 +37,7 @@ def get_calibration_data(planet_id: str, mode: str ="train") -> Dict[str, pd.Dat
     """キャリブレーションデータの取得
     Returns:
         Dict[str, pd.DataFrame]: 各種データを保持したDFをバリューとする辞書
+    """
     return {
         "AIRS-CH0_calibration_dark": pd.read_parquet(os.path.join(BASE_PATH, f"{mode}/{planet_id}/AIRS-CH0_calibration/dark.parquet")),
         "AIRS-CH0_calibration_dark": pd.read_parquet(os.path.join(BASE_PATH, f"{mode}/{planet_id}/FGS1_signal_calibration/dark.parquet")),
