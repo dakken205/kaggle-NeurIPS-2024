@@ -1,6 +1,6 @@
 import os
 import pandas as pd
-from typing import List
+from typing import Dict
 
 BASE_PATH = "/kaggle/input/ariel-data-challenge-2024"
 
