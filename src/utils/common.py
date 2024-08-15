@@ -40,13 +40,13 @@ def get_calibration_data(planet_id: str, mode: str ="train") -> Dict[str, pd.Dat
     """
     return {
         "AIRS-CH0_calibration_dark": pd.read_parquet(os.path.join(BASE_PATH, f"{mode}/{planet_id}/AIRS-CH0_calibration/dark.parquet")),
-        "AIRS-CH0_calibration_dark": pd.read_parquet(os.path.join(BASE_PATH, f"{mode}/{planet_id}/FGS1_signal_calibration/dark.parquet")),
+        "AIRS-CH0_calibration_dark": pd.read_parquet(os.path.join(BASE_PATH, f"{mode}/{planet_id}/FGS1_calibration/dark.parquet")),
         "AIRS-CH0_calibration_dead": pd.read_parquet(os.path.join(BASE_PATH, f"{mode}/{planet_id}/AIRS-CH0_calibration/dead.parquet")),
-        "AIRS-CH0_calibration_dead": pd.read_parquet(os.path.join(BASE_PATH, f"{mode}/{planet_id}/FGS1_signal_calibration/dead.parquet")),
+        "AIRS-CH0_calibration_dead": pd.read_parquet(os.path.join(BASE_PATH, f"{mode}/{planet_id}/FGS1_calibration/dead.parquet")),
         "AIRS-CH0_calibration_flat": pd.read_parquet(os.path.join(BASE_PATH, f"{mode}/{planet_id}/AIRS-CH0_calibration/flat.parquet")),
-        "AIRS-CH0_calibration_flat": pd.read_parquet(os.path.join(BASE_PATH, f"{mode}/{planet_id}/FGS1_signal_calibration/flat.parquet")),
+        "AIRS-CH0_calibration_flat": pd.read_parquet(os.path.join(BASE_PATH, f"{mode}/{planet_id}/FGS1_calibration/flat.parquet")),
         "AIRS-CH0_calibration_linear_corr": pd.read_parquet(os.path.join(BASE_PATH, f"{mode}/{planet_id}/AIRS-CH0_calibration/linear_corr.parquet")),
-        "AIRS-CH0_calibration_linear_corr": pd.read_parquet(os.path.join(BASE_PATH, f"{mode}/{planet_id}/FGS1_signal_calibration/linear_corr.parquet")),
+        "AIRS-CH0_calibration_linear_corr": pd.read_parquet(os.path.join(BASE_PATH, f"{mode}/{planet_id}/FGS1_calibration/linear_corr.parquet")),
         "AIRS-CH0_calibration_read": pd.read_parquet(os.path.join(BASE_PATH, f"{mode}/{planet_id}/AIRS-CH0_calibration/read.parquet")),
-        "AIRS-CH0_calibration_read": pd.read_parquet(os.path.join(BASE_PATH, f"{mode}/{planet_id}/FGS1_signal_calibration/read.parquet")),
+        "AIRS-CH0_calibration_read": pd.read_parquet(os.path.join(BASE_PATH, f"{mode}/{planet_id}/FGS1_calibration/read.parquet")),
     }
