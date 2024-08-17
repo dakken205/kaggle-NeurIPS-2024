@@ -37,6 +37,6 @@ def get_smoothed_signals_df(planet_ids: List[str],
         data[planet_id] = get_smoothed_signal(planet_id,
                                 instrument_idx=instrument_idx,
                                 mode=mode)
-    df = pd.DataFrame(data)
+    df = pd.DataFrame(data).T
     df.index.name = "planet_id"
     return df
