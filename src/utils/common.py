@@ -23,17 +23,26 @@ def get_meta_data() -> Dict[str, pd.DataFrame]:
         "wavelengths": pd.read_csv(os.path.join(BASE_PATH, "wavelengths.csv")),
     }
 
-def get_signal_data(planet_id: str, mode: str ="train") -> Dict[str, pd.DataFrame]:
+def get_signal_data(planet_id: str,
+                    instrument_id: int,
+                    mode: str ="train"
+    ) -> Dict[str, pd.DataFrame]:
     """planet_idに紐づくデータを返す．具体的にはシグナルデータとキャリブレーションデータ
+    Args:
+        planet_id (str): planet_idを指定
+        instrument_idx (int): 0: AIRS-CH0, 1: FGS1
+        mode (str, optional): train, testでデータを指定. Defaults to "train".
     Returns:
         Dict[str, pd.DataFrame]: 各種データを保持したDFをバリューとする辞書
     """
-    return {
-        "AIRS-CH0_signal": pd.read_parquet(os.path.join(BASE_PATH, f"{mode}/{planet_id}/AIRS-CH0_signal.parquet")),
-        "FGS1_signal": pd.read_parquet(os.path.join(BASE_PATH, f"{mode}/{planet_id}/FGS1_signal.parquet")),
-    }
+    if instrument_id == 0:
+        return pd.read_parquet(os.path.join(BASE_PATH, f"{mode}/{planet_id}/AIRS-CH0_signal.parquet")),
+    else:
+        return pd.read_parquet(os.path.join(BASE_PATH, f"{mode}/{planet_id}/FGS1_signal.parquet")),
 
-def get_calibration_data(planet_id: str, mode: str ="train") -> Dict[str, pd.DataFrame]:
+def get_calibration_data(planet_id: str,
+                         mode: str ="train"
+    ) -> Dict[str, pd.DataFrame]:
     """キャリブレーションデータの取得
     Returns:
         Dict[str, pd.DataFrame]: 各種データを保持したDFをバリューとする辞書
