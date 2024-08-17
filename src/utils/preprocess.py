@@ -15,7 +15,7 @@ def get_smoothed_signal(planet_id: str,
     Returns:
         np.ndarray: スムージング後の配列
     """
-    df_signal = get_signal_data(planet_id, mode=mode).values()[instrument_idx]
+    df_signal = list(get_signal_data(planet_id, mode=mode).values())[instrument_idx]
     signal = df_signal.values.mean(axis=1)
     net_signal = signal[1::2] - signal[0::2]
     return net_signal
