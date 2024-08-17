@@ -10,7 +10,7 @@ def get_label_data() -> pd.DataFrame:
     Returns:
         pd.DataFrame: 学習用ラベルDF
     """
-    types = defaultdict("float", planet_id="str")
+    types = defaultdict(lambda: "float", planet_id="str")
     return pd.read_csv(os.path.join(BASE_PATH, "train_labels.csv"),
                        dtype=types, index_col="planet_id")
 
@@ -19,7 +19,7 @@ def get_meta_data() -> Dict[str, pd.DataFrame]:
     Returns:
         Dict[str, pd.DataFrame]: キーをstrとして機器に依存するパラメータ等を保持しているデータフレームを返す
     """
-    types = defaultdict("float", planet_id="str")
+    types = defaultdict(lambda: "float", planet_id="str")
     return {
         "train_ads_info": pd.read_csv(os.path.join(BASE_PATH, "train_adc_info.csv"),
                                       dtype=types, index_col="planet_id"),
