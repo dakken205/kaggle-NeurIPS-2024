@@ -1,6 +1,7 @@
 import os
 import pandas as pd
 from typing import Dict
+from collections import defaultdict
 
 BASE_PATH = "/kaggle/input/ariel-data-challenge-2024"
 
@@ -9,16 +10,21 @@ def get_label_data() -> pd.DataFrame:
     Returns:
         pd.DataFrame: 学習用ラベルDF
     """
-    return pd.read_csv(os.path.join(BASE_PATH, "train_labels.csv"))
+    types = defaultdict(float, planet_id="str")
+    return pd.read_csv(os.path.join(BASE_PATH, "train_labels.csv"),
+                       dtype=types, index_col="planet_id")
 
 def get_meta_data() -> Dict[str, pd.DataFrame]:
     """メタデータを取得
     Returns:
         Dict[str, pd.DataFrame]: キーをstrとして機器に依存するパラメータ等を保持しているデータフレームを返す
     """
+    types = defaultdict(float, planet_id="str")
     return {
-        "train_ads_info": pd.read_csv(os.path.join(BASE_PATH, "train_adc_info.csv")),
-        "test_ads_info": pd.read_csv(os.path.join(BASE_PATH, "test_adc_info.csv")),
+        "train_ads_info": pd.read_csv(os.path.join(BASE_PATH, "train_adc_info.csv"),
+                                      dtype=types, index_col="planet_id"),
+        "test_ads_info": pd.read_csv(os.path.join(BASE_PATH, "test_adc_info.csv"),
+                                     dtype=types, index_col="planet_id"),
         "axis_info": pd.read_parquet(os.path.join(BASE_PATH, "axis_info.parquet")),
         "wavelengths": pd.read_csv(os.path.join(BASE_PATH, "wavelengths.csv")),
     }
