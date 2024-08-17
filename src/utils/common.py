@@ -30,7 +30,7 @@ def get_meta_data() -> Dict[str, pd.DataFrame]:
     }
 
 def get_signal_data(planet_id: str,
-                    instrument_id: int,
+                    instrument_idx: int,
                     mode: str ="train"
     ) -> Dict[str, pd.DataFrame]:
     """planet_idに紐づくデータを返す．具体的にはシグナルデータとキャリブレーションデータ
@@ -41,7 +41,7 @@ def get_signal_data(planet_id: str,
     Returns:
         Dict[str, pd.DataFrame]: 各種データを保持したDFをバリューとする辞書
     """
-    if instrument_id == 0:
+    if instrument_idx == 0:
         return pd.read_parquet(os.path.join(BASE_PATH, f"{mode}/{planet_id}/AIRS-CH0_signal.parquet"))
     else:
         return pd.read_parquet(os.path.join(BASE_PATH, f"{mode}/{planet_id}/FGS1_signal.parquet"))
